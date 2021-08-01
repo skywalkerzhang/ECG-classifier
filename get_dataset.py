@@ -54,7 +54,10 @@ for i in range(len(train_files)):
 
         training_recordings.append(np.array(recording_new))
     np.save(f'../data/training_sets{i}.npy', np.array(training_recordings))
-    current_label = df['39732003']
+    lad = df['39732003']
+    rad = df['47665007']
+    no_ad = lad == rad == 0
+    current_label = np.array([no_ad, lad, rad])
     np.save(f'../data/training_labels{i}.npy', current_label.to_numpy())
 
 # test
